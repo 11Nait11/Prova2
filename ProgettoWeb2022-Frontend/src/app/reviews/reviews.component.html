@@ -1,0 +1,32 @@
+<div id="mediaRece">
+  <div style="margin-top: 5px;">{{reviews.length}} Valutazioni globali </div>
+</div>
+
+<div *ngFor="let review of reviews" class="container-fluid m-3 p-3">
+  <div>
+    <div *ngIf="user.role == 'admin' || user.nickname === review.user.nickname" class="float-sm-right">
+      <button class="btn btn-danger" (click)="deleteReview(review.id)">Elimina</button>
+    </div>
+    <div>
+      <h4 *ngIf="user.nickname != undefined"><a href="http://localhost:4200/profiles/{{review.user.nickname}}?sessionId={{getSessionId()}}"><i class="fa-regular fa-user"></i> {{review.user.nickname}}</a> </h4>
+      <h4 *ngIf="user.nickname == undefined"><a href="http://localhost:4200/profiles/{{review.user.nickname}}"><i class="fa-regular fa-user"></i> {{review.user.nickname}}</a> </h4>
+    </div>
+    <!-- titolo + descrizione-->
+    <div style="margin-left: 10px;">
+
+      <span *ngIf="review.vote ==5"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+      <span *ngIf="review.vote ==4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span>
+      <span *ngIf="review.vote ==3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span>
+      <span *ngIf="review.vote ==2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span>
+      <span *ngIf="review.vote ==1"><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i></span>
+
+
+      <strong style="margin-left: 5px;">{{review.title}}</strong>
+      <span><p>{{review.description}}</p></span>
+    </div>
+    </div>
+
+</div>
+
+
+

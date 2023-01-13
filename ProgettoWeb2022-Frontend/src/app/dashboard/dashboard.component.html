@@ -1,0 +1,46 @@
+<div class="pricing-header px-3 py-3 pt-md-1 pb-md-4 mx-auto container">
+  <div class="text-center">
+    <h1 class="display-4">Affitti/Vendite</h1>
+    <p class="lead">Inserisci il nome di un annuncio o la città a cui sei interessato e ti mostreremo i risultati!</p>
+  </div>
+  <form class="container row">
+    <div class="col-lg-2 col-md-3 col-sm-4">
+      <select class="form-control btn-lg" id="searchType" (change)="onChange($event)">
+        <option>Città</option>
+        <option>Titolo</option>
+        <option>Contenuto</option>
+      </select>
+    </div>
+    <div *ngIf='getSearchType() === "" || getSearchType() == "Città"' class="form-group col-lg-9 col-md-9 col-sm-9">
+      <input type="text" class="form-control btn-lg" id="searchInput" placeholder="Città">
+    </div>
+    <div *ngIf='getSearchType() === "Titolo"' class="form-group col-lg-9 col-lg-9 col-md-9 col-sm-9">
+      <input type="text" class="form-control btn-lg" id="searchInput" placeholder="Titolo">
+    </div>
+    <div *ngIf='getSearchType() === "Contenuto"' class="form-group col-lg-9 col-lg-9 col-md-9 col-sm-9">
+      <input type="text" class="form-control btn-lg" id="searchInput" placeholder="Contenuto">
+    </div>
+  </form>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary" (click)="search()"><span class="h5">Cerca</span></button>
+  </div>
+  <div class="mt-4 pt-4">
+    <div class="btn-group btn-group-toggle container" data-toggle="buttons">
+      <label class="btn btn-primary active" (click)="onAdsFilterChange('all')">
+        <input type="radio" name="options" id="option1" checked> Tutto
+      </label>
+      <label class="btn btn-primary" (click)="onAdsFilterChange('rent')">
+        <input type="radio" name="options" id="option2" > Affitto
+      </label>
+      <label class="btn btn-primary" (click)="onAdsFilterChange('sell')">
+        <input type="radio" name="options" id="option3"> Vendita
+      </label>
+      <label class="btn btn-info col-lg-1 col-md-1 col-sm-1" (click)="onOrderChange()">
+        <input type="radio" name="options" id="option4"><i class="fa fa-sort"></i>
+      </label>
+    </div>
+    <div>
+    </div>
+    <app-ad-cards [order]="order" [filter]="adsFilter" [ads]="ads"></app-ad-cards>
+  </div>
+</div>

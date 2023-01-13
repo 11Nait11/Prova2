@@ -1,0 +1,41 @@
+
+
+
+<div *ngIf="asta">
+  <span>Offerta Corrente: EUR</span> <span id="currentPrice" ><strong> {{asta.currentPrice}}</strong></span>
+
+  <div *ngIf="!isEnd">
+    <button   style="border-radius: 50px; margin-top:15px" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#make-offer-modal">Fai un'offerta</button>
+    <p style="margin-left: 5px;">inserisci {{asta.currentPrice+1}} o piu'</p>
+    <p id="timeReal">{{getTimeRemaining()}} </p>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="make-offer-modal" tabindex="-1" role="dialog" aria-labelledby="makeOfferModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="makeOfferModalLabel">Fai un'offerta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="offer-amount">Importo dell'offerta</label>
+              <input type="number" class="form-control" id="offer-amount" placeholder="Inserisci l'importo dell'offerta" value="{{asta.currentPrice+1}}">
+              <p id="infoPrezzo" class="nodisplay" style="margin-left: 5px; ">inserisci {{asta.currentPrice+1}} o piu'</p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="chiudi" (click)="inviaOfferta()" type="button" class="btn btn-primary" data-dismiss="modal" >Invia offerta</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

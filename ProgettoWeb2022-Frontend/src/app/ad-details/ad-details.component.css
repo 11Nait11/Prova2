@@ -1,0 +1,49 @@
+.separa{
+  border: solid ;
+  border-color:  #aeb9c6;
+  height: 1px;
+  margin-top: 15px;
+  border-width: 1px;
+
+}
+.contatta{
+  border: solid ;
+  border-left: solid;
+  border-color:red;
+
+}
+.display{
+  border: 1px dashed #aeb9c6;
+
+}
+.nodisplay
+{
+  display: none;
+}
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+.container {
+  position: relative;
+}
+
+
+.i{
+  width: 400px;
+
+}
+
+.map-responsive{
+
+  overflow:hidden;
+
+  padding-bottom:56.25%;
+
+  position:relative;
+
+  height:0;
+
+}

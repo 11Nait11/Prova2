@@ -1,0 +1,90 @@
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCugDwETlCONJNbxQRQ7Qv5OwsD6bv98yY&callback=initMap"></script>
+<div class="container rounded bg-white justify-content-between">
+  <div class="row">
+      <div class="col-lg-1">
+      </div>
+      <form class="col-md-11 col-lg-9 col-sm-12 jumbotron jumbotron pt-1" style="margin-left: 5%;" id="addAdForm">
+          <div class="p-1 py-5" style="margin-top: -5%;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-center display-3">Aggiungi un Annuncio!</h4>
+              </div>
+              <hr>
+              <div class="col-md-12 mt-3 input-group">
+                <div class="col-md-4">
+                  <label for="statusInput" class="h6">Affitto/Vendita</label>
+                  <select id="statusInput" type="text" class="form-control" required>
+                    <option>Asta</option>
+                    <option>Affitto</option>
+
+                    <option default>Vendita</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="titleInput" class="h6">Titolo</label>
+                  <input id="titleInput" type="text" class="form-control" placeholder="Titolo" value="" required>
+                </div>
+                <div class=" col-md-4">
+                  <input style="display: none;" type="checkbox" class="form-check-input" id="isAuctionInput">
+                  <label for="datetime-local">Date and Time:</label>
+                  <input type="datetime-local" id="datetime-local" name="datetime-local">
+
+                </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label for="text-areaInput" class="h6">Descrizione</label>
+                    <textarea id="text-areaInput" type="text" class="form-control" placeholder="Descrizione" rows="4" value="" aria-required></textarea>
+                  </div>
+                  <div class="col-md-12 mt-3 input-group">
+                    <div class="col-md-6">
+                      <label for="typeInput" class="h6">Tipo</label>
+                      <select id="typeInput" type="text" class="form-control" placeholder="Tipo" value="" required>
+                        <option>Villa</option>
+                        <option>Appartamento</option>
+                        <option>Terreno</option>
+                      </select>
+                      <label for="cityInput" class="h6">Città</label>
+                      <input id="cityInput" type="text" class="form-control" placeholder="Città" value="" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="mqInput" class="h6">Metriquadri</label>
+                      <input id="mqInput" type="number" class="form-control" placeholder="mq" value="" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mt-2">
+                    <label for="mediaInput" class="h6">Aggiungi Foto e/o Video</label>
+                    <input class="form-control" type="file" id="mediaInput" accept="image/*" required>
+                  </div>
+              </div>
+              <div class="row mt-2">
+                  <div *ngIf="apiLoaded | async" class="col-md-12">
+                    <br>
+                    <label for="mapInput" class="h6">Posizione</label>
+                    <google-map class="col-sm-12" [center]="center" [zoom]="zoom" (mapClick)="addMarker($event)">
+                      <map-marker *ngFor="let markerPosition of markerPositions"
+                                  [position]="markerPosition"
+                                  [options]="markerOptions">
+                      </map-marker>
+                    </google-map>
+                    <br>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="priceInput" class="h6">Prezzo</label>
+                    <input type="number" class="form-control" placeholder="Prezzo" id="priceInput" value="" required>
+                  </div>
+              </div>
+              <div class="mt-5 text-center">
+                <hr>
+                <button class="btn btn-primary profile-button mr-2" type="button" (click)="addAd()">Aggiungi Annuncio</button>
+                <a class="btn btn-danger profile-button ml-2" type="button" href="/dashboard?sessionId={{getSessionId()}}">Annulla</a>
+              </div>
+          </div>
+        </form>
+      <div class="col-md-1 col-lg-1">
+          <div class="p-3 py-5">
+
+          </div>
+      </div>
+  </div>
+</div>

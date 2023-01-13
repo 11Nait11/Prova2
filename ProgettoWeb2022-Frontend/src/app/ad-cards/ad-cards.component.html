@@ -1,0 +1,44 @@
+<span *ngIf="!isEmpty()">
+  <span *ngFor="let ad of ads">
+    <span *ngIf="canShow(ad.status)">
+      <div class="container justify-content-center">
+        <div class="card jumbotron">
+          <div class="text-center badge-info badge" style="margin-top: -2%;" id="statusTitle">
+              <h2>{{ad.status.toUpperCase()}}</h2>
+          </div>
+          <div class="row no-gutters m-3">
+              <div class="col-lg-5 col-md-7 col-md-12" id="ad{{ad.id}}">
+                <img src="" id="img{{ad.id}}" width="400" height="250">
+              </div>
+              <div class="col">
+                  <div class="card-block px-1">
+                      <h4 class="card-title d-inline-block">{{ad.title}}</h4>
+                      <p class="card-text text-break">{{ad.description}}</p>
+                      <a class="btn btn-primary">{{ad.price}} &euro;</a>
+                      <hr>
+                      <a href="/profiles/{{ad.user.nickname}}?sessionId={{getSessionId()}}" class="card-text text-dark">{{ad.user.nickname}}</a>
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer w-100 text-muted">
+              <a href="/ad/{{ad.id}}?sessionId={{getSessionId()}}" class="btn btn-lg btn-outline-primary btn-block">Leggi annuncio</a>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </span>
+  </span>
+</span>
+
+
+<!--  No ads TO show -->
+<span *ngIf="isEmpty()">
+  <div class="container justify-content-center">
+    <div class="card jumbotron">
+      <div class="text-center text-muted" style="margin-top: -2%;" id="statusTitle">
+          <h2>Non ci sono annunci</h2>
+      </div>
+    </div>
+  </div>
+</span>
+

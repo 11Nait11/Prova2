@@ -1,0 +1,153 @@
+<div *ngIf="loggedUser.nickname === user.nickname" class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-12 border-right" style="margin-top: -2%;">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+            <span class="font-weight-bold h3">{{user.name}} {{user.lastname}}</span>
+            <span class="text-black-50">{{user.email}}</span></div>
+            <div *ngIf="loggedUser.role === 'admin'" class="text-center">
+              <button *ngIf="!user.isBanned" class="btn alert-danger" type="button" (click)="banUser(user.nickname)">Banna Utente</button>
+            </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 border-right">
+          <div class="p-1 py-5" style="margin-top: -5%;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-center display-3">Profilo</h4>
+              </div>
+              <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nome" value="{{user.name}}">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Cognome</label>
+                    <input type="text" class="form-control" id="lastname" value="{{user.lastname}}" placeholder="Cognome">
+                  </div>
+              </div>
+              <div class="row mt-2">
+                  <div class="col-md-12">
+                    <label>Numero di telefono</label>
+                    <input type="tel" class="form-control" id="telephone" placeholder="Numero di Telefono" value="{{user.telephone}}">
+                  </div>
+                  <div class="col-md-12">
+                    <label>Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="e-mail" value="{{user.email}}">
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                    <label>Paese</label>
+                    <input type="text" class="form-control" id="state" placeholder="country" value="{{user.state}}">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Regione</label>
+                    <input type="text" class="form-control" id="country" value="Calabria" placeholder="{{user.country}}">
+                  </div>
+                  <div class="col-md-6">
+                    <label>Indirizzo di Residenza</label>
+                    <input type="text" class="form-control" id="address" placeholder="Indirizzo" value="{{user.address}}">
+                  </div>
+                  <div class="col-md-6">
+                    <label>CAP</label>
+                    <input type="tel" class="form-control" id="postalCode" placeholder="CAP" value="{{user.postalCode}}">
+                  </div>
+                  <hr>
+              </div>
+              <div class=" row mt-4">
+                  <div class="col-md-12">
+                    <label>Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="password" value="">
+                  </div>
+                  <div class="col-md-12">
+                    <label>Conferma Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Conferma password" value="">
+                  </div>
+              </div>
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="button" (click)="updateUser()">Salva Profilo</button>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-3 col-md-12 col-sm-12">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center experience">
+                <span>Immobili</span>
+                <a class="btn btn-outline-primary mr-md-4" href="http://localhost:4200/addAd?sessionId={{getSessionId()}}"><span><i class="fa fa-plus"></i> Annuncio</span>
+                </a>
+                </div>
+                <br>
+              <div class="col-md-12">
+                <label for="propertiesList" class="labels">Lista dei tuoi Immobili</label>
+                <br>
+                <a name="propertiesList" class="btn btn-primary text-white" href="http://localhost:8080/properties">Lista Immobili</a>
+              </div>
+                 <br>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="loggedUser.nickname !== user.nickname"class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-lg-3 col-md-0 col-sm-12 border-right" style="margin-top: -2%;">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+            <span class="font-weight-bold">{{user.name}} {{user.lastname}}</span>
+            <span class="text-black-50">{{user.email}}</span>
+          </div>
+          <div *ngIf="loggedUser.role === 'admin'" class="text-center">
+            <button class="btn alert-danger" type="button" (click)="banUser(user.nickname)">Banna Utente</button>
+            <button *ngIf="user.isBanned" class="btn alert-danger" type="button" (click)="unBanUser(user.nickname)">Sbanna Utente</button>
+            <br>
+            <button *ngIf="user.role == 'user'" class="btn alert-primary m-2" type="button" (click)="makeAdmin(user.nickname)">Rendi Admin</button>
+          </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 border-right">
+          <div class="p-1 py-5" style="margin-top: -5%;">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-center display-4">Profilo</h4>
+              </div>
+              <div class="row mt-2">
+                  <div class="col-md-6">
+                    <label class="labels">Nome</label>
+                    <input type="text" class="form-control" placeholder="Nome" value="{{user.name}}" disabled>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Cognome</label>
+                    <input type="text" class="form-control" value="{{user.lastname}}" placeholder="Cognome" disabled>
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12">
+                    <label class="labels">Numero di telefono</label>
+                    <input type="tel" class="form-control" placeholder="Numero di Telefono" value="" disabled>
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">Email</label>
+                    <input type="text" class="form-control" placeholder="e-mail" value="{{user.email}}" disabled>
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                    <label class="labels">Paese</label>
+                    <input type="text" class="form-control" placeholder="country" value="Italia" disabled>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Regione</label>
+                    <input type="text" class="form-control" value="Calabria" placeholder="state" disabled>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labels">Indirizzo di Residenza</label>
+                    <input type="text" class="form-control" placeholder="Indirizzo" value="Via Giacomo Matteotti" disabled>
+                  </div>
+                  <div class="col-md-12">
+                    <label class="labels">CAP</label>
+                    <input type="tel" class="form-control" placeholder="Indirizzo" value="Via Giacomo Matteotti" disabled>
+                  </div>
+              </div>
+              <div>
+          </div>
+      </div>
+  </div>
+</div>
+

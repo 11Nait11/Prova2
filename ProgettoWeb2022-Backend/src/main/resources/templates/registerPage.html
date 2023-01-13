@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CasaSubito.it</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Sharp" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Two+Tone" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link href="../css/loginStyle.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/loginStyle.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="navigation-wrap bg-light start-header start-style container" style="position: static;">
+        <div class="">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                        <a id="logo" href="http://localhost:4200/dashboard">
+                            <img src="../assets/casasubito-high-resolution-color-logo.png" alt="logo" width="370">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="http://localhost:4200/help">Supporto</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 mr-auto">
+                                    <a class="nav-link" href="http://localhost:8080/login"><i class="fa-solid fa-right-to-bracket"></i> Accedi</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="http://localhost:8080/register"><i class="fa-solid fa-user-plus"></i> Registrati</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-sm-9 col-xl-9 mx-auto">
+                <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                    <div class="card-img-left d-none d-md-flex img-responsive collapsed">
+                        <!-- in css -->
+                    </div>
+                    <div class="card-body p-1 p-sm-4">
+                        <h5 class="card-title text-center display-2 mb-4 fw-light fs-5">Sign-Up</h5>
+                        <form id="inputForm">
+                            <div class="form-floating mb-3">
+                                <input type="text" name="nickname" class="form-control" id="nicknameInput" placeholder="Nickname">
+                            </div>
+                            <div class="form-floating mb-3 input-group">
+                                <input type="text" name="name" class="form-control input-sm" id="nameInput" placeholder="Name">
+                                <input type="text" name="lastname" class="form-control input-sm" id="lastnameInput" placeholder="Lastname">
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" name="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" name="age" class="form-control" id="ageInput" placeholder="Age">
+                            </div>
+                            <hr>
+                            <div class="form-floating mb-3">
+                                <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Password">
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="cPassInput" placeholder="Confirm Password">
+                            </div>
+                            <div>
+                                <p class="h5"></p>
+                            </div>
+                            <div class="d-grid mb-2">
+                                <input id="submitButton" type="button" class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" value="Sing-up"></button>
+                            </div>
+                            <a class="d-block text-center mt-2 small" href="http://localhost:8080/login">Already have an account? Sign in!</a>
+                            <hr class="my-4">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let nicknameInput = document.querySelector("#nicknameInput");
+            let nameInput = document.querySelector("#nameInput");
+            let lastnameInput = document.querySelector("#lastnameInput");
+            let emailInput = document.querySelector("#emailInput");
+            let ageInput = document.querySelector("#ageInput");
+            let passwordInput = document.querySelector("#passwordInput");
+            let cPassInput = document.querySelector("#cPassInput");
+            $('#submitButton').click(function () {
+                if(nicknameInput.value != "" && nameInput.value != "" && lastnameInput.value != "") {
+                    if(emailInput.value != ""){
+                        if(ageInput.value != "" && ageInput.value >= 18){
+                            if(passwordInput.value != "" && cPassInput.value != ""){
+                                if(passwordInput.value.length >= 8){
+                                    if(passwordInput.value == cPassInput.value){
+                                        $.post('doRegister',   // url
+                                            {   nickname: nicknameInput.value,
+                                                name: nameInput.value,
+                                                lastname: lastnameInput.value,
+                                                email: emailInput.value,
+                                                age: ageInput.value,
+                                                password: passwordInput.value}, // data to be submit
+                                            function (response, status, jqXHR) {// success callback
+                                                if(response === "ERROR") {
+                                                    $('p').text("Something went wrong");
+                                                }else if(response === "USER_EXISTS"){
+                                                    $('p').text("User already exists.");
+                                                }else{
+                                                    console.log(response);
+                                                    window.location.replace("http://localhost:4200/dashboard?sessionId=" + response);
+                                                }
+                                            });
+                                    }else{
+                                        $('p').text("Passwords don't match.");
+                                    }
+                                }else{
+                                    $('p').text("Password must be at least 8 characters.");
+                                }
+                            }else{
+                                $('p').text("Please enter your password");
+                            }
+                        }else{
+                            $('p').text("Your need to be at least 18 years old.");
+                        }
+                    }else{
+                        $('p').text("Please enter a valid email address");
+                    }
+                }else{
+                    $('p').text("Please enter a valid nickname, name and lastname.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

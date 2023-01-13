@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/properties")
+//Ok
 public class PropertyService extends HttpServlet {
 
     @Override
